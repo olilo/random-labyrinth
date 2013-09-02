@@ -28,7 +28,7 @@ public class TestGraphicsInterface {
 		graphics.add(new Rectangle(100, 200), Color.RED);
 		
 		JPanel testPanel = new JPanel();
-		testPanel.add(new JLabel("TestLabel mit gaaaaaaaaanz viel Text .... blubblkajdölfkjasdölfkjasdölksjdöflaksjdfölkasjlgöfasd"));
+		testPanel.add(new JLabel("TestLabel mit gaaaaaaaaanz viel Text .... blubblkajdÃ¶lfkjasdÃ¶lfkjasdÃ¶lksjdÃ¶flaksjdfÃ¶lkasjlgÃ¶fasd"));
 		testPanel.setPreferredSize(new Dimension(500, 200));
 		testPanel.setLocation(0, 0);
 		testPanel.setBounds(0, 0, 500, 200);

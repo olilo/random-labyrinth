@@ -1,2 +1,7 @@
 #!/bin/sh
-java -cp bin gui.Labyrinth
+OLDPWD=$PWD
+cd $(dirname $0)
+
+ant
+
+cd $OLDPWD
