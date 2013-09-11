@@ -1,6 +1,10 @@
 .classpath
 .project
 .settings
+
+.idea
+*.iml
+
 bin
 dist
 
