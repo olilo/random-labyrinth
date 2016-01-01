@@ -124,24 +124,24 @@ public class PathGenerator {
 		if (startpkt <= horiz_felder) {
 			x_sp = startpkt;
 			y_sp = Const.topPlayingBorder;
-			Const.startDirection = new Direction("south");
+			Const.startDirection = Direction.SOUTH;
 		}
 		if ((startpkt > horiz_felder)
 				&& (startpkt <= horiz_felder + verti_felder)) {
 			x_sp = Const.rightPlayingBorder;
 			y_sp = startpkt - horiz_felder;
-			Const.startDirection = new Direction("west");
+			Const.startDirection = Direction.WEST;
 		}
 		if ((startpkt > horiz_felder + verti_felder)
 				&& (startpkt <= 2 * horiz_felder + verti_felder)) {
 			x_sp = 2 * horiz_felder + verti_felder - startpkt + 2;
 			y_sp = Const.bottomPlayingBorder;
-			Const.startDirection = new Direction("north");
+			Const.startDirection = Direction.NORTH;
 		}
 		if (startpkt > 2 * horiz_felder + verti_felder) {
 			x_sp = Const.leftPlayingBorder;
 			y_sp = 2 * (horiz_felder + verti_felder) - startpkt + 2;
-			Const.startDirection = new Direction("east");
+			Const.startDirection = Direction.EAST;
 		}
 		start = new VirtualPoint(x_sp, y_sp, Const.stoneWidth, Const.stoneHeight);
 		System.out.println(start);
@@ -353,7 +353,7 @@ public class PathGenerator {
 					current = x[4];
 				} else {
 					if (x_con[7] && x_con[8] && x_con[9] && x_play[2])
-						if (altDir2.isEqual(altDir1.revert())) {
+						if (altDir2.equals(altDir1.revert())) {
 							if (x_con[3]) {
 								curDir = altDir2;
 								current = x[7];
@@ -372,7 +372,7 @@ public class PathGenerator {
 			}
 		} else {
 			if (x_con[7] && x_con[8] && x_con[9] && x_play[2])
-				if (altDir2.isEqual(altDir1.revert())) {
+				if (altDir2.equals(altDir1.revert())) {
 					if (x_con[3]) {
 						curDir = altDir2;
 						current = x[7];

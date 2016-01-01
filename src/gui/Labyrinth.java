@@ -55,12 +55,12 @@ public class Labyrinth implements ActionListener{
 	
 	public void setVictoryFrame() {
 		victory = new JDialog();
-		victory.setPreferredSize(new Dimension(300, 100));
+		victory.setPreferredSize(new Dimension(300, 150));
 		victory.setTitle("Sieg!");
 		victory.setResizable(false);
 		
 		JTextArea victoryText = new JTextArea();
-		victoryText.setText("Herzlichen Glückwunsch, \nSie haben gewonnen. \n Möchten Sie noch einmal spielen?");
+		victoryText.setText("Herzlichen Glückwunsch, \n Sie haben gewonnen. \n Möchten Sie noch einmal spielen?");
 		victoryText.setEditable(false);
 		//victoryText.setHorizontalTextPosition(JLabel.CENTER);
 		victory.getContentPane().add(victoryText, BorderLayout.CENTER);
@@ -182,7 +182,7 @@ public class Labyrinth implements ActionListener{
 		startPanel.setLocation(0, 0);
 		startPanel.setOpaque(false);
 		final JPanel finishPanel = new JPanel () {
-			private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = -987534L;
 			private final Image toDraw = getToolkit().createImage(zielImage);
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -191,17 +191,18 @@ public class Labyrinth implements ActionListener{
 			}
 		};
 		finishPanel.setPreferredSize(new Dimension(30, 30));
+		finishPanel.setBounds(paths.getFinish().toRealRectangle());
 		finishPanel.setLocation(paths.getFinish().toRealRectangle().getLocation());
 		finishPanel.setOpaque(false);
-		background.graphicsInterface.add(startPanel);
+		background.graphicsInterface.add(startPanel, GraphicsInterface.DEFAULT_LAYER);
 		background.graphicsInterface.moveToFront(startPanel);
 		startPanel.repaint();
 		background.graphicsInterface.add(player, GraphicsInterface.DEFAULT_LAYER);
 		background.graphicsInterface.moveToFront(player);
-		background.graphicsInterface.add(finishPanel);
+		finishID = background.graphicsInterface.addLP(paths.getFinish(), Const.finishColor);
+		background.graphicsInterface.add(finishPanel, GraphicsInterface.DEFAULT_LAYER);
 		background.graphicsInterface.moveToFront(finishPanel);
 		finishPanel.repaint();
-		finishID = background.graphicsInterface.addLP(paths.getFinish(), Const.finishColor);
 		background.validate();
 		waiting.setVisible(false);
 	}
@@ -243,40 +244,38 @@ public class Labyrinth implements ActionListener{
 */
 	
 	class WorkspaceKeyListener extends KeyAdapter {
-		protected boolean ctrlPressed = false;
-		
+
 		public void keyPressed(KeyEvent e) {
-			Direction dir = new Direction(-1);	// don't move
+			Direction dir = Direction.NONE;	// don't move
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_RIGHT:
-				dir = new Direction(Direction.east);
-				break;
-			case KeyEvent.VK_LEFT:
-				dir = new Direction(Direction.west);
-				break;
-			case KeyEvent.VK_UP:
-				dir = new Direction(Direction.north);
-				break;
-			case KeyEvent.VK_DOWN:
-				dir = new Direction(Direction.south);
-				break;
-			case KeyEvent.VK_CONTROL:
-				ctrlPressed = true;
-				break;
-			case KeyEvent.VK_ALT:
-				if (ctrlPressed)
-					player.setPosition(player.getFinish());
-				ctrlPressed = false;
-				break;
-			default :
-				break;
+				case KeyEvent.VK_RIGHT:
+				case KeyEvent.VK_D:
+					dir = Direction.EAST;
+					break;
+				case KeyEvent.VK_LEFT:
+				case KeyEvent.VK_A:
+					dir = Direction.WEST;
+					break;
+				case KeyEvent.VK_UP:
+				case KeyEvent.VK_W:
+					dir = Direction.NORTH;
+					break;
+				case KeyEvent.VK_DOWN:
+				case KeyEvent.VK_S:
+					dir = Direction.SOUTH;
+					break;
+				case KeyEvent.VK_L:
+					if (e.isAltDown() && e.isControlDown()) {
+						player.setPosition(player.getFinish());
+					}
+					break;
+				default :
+					break;
 			}
 			player.move(dir);
-			if (player.isPartOf(currentPath)//player.isPartOf(paths.wrongWays)
-					/*|| player.isPartOf(paths.rightWay)*/);
-				//background.graphicsInterface.editEntry(player, playerID);
-			else
+			if (!player.isPartOf(currentPath)) {
 				player.move(dir.revert());
+			}
 			if (player.atFinish()) {
 				victory.setVisible(true);
 				//background.showVictoryDialog();

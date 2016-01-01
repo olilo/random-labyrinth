@@ -21,8 +21,6 @@ public class ImagePath extends JPanel{
 	public final int width;
 	public final int height;
 	
-
-	
 	private static final long serialVersionUID = 2L;
 
 	private int length = 0;

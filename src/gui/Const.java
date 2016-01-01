@@ -48,7 +48,7 @@ public class Const {
 	 * Labyrinth-coordinates. <br>
 	 * Default : 35
 	 * 
-	 * @see playingWidthReal
+	 * @see #playingWidthReal
 	 */
 	public static int playingWidth = 30;
 
@@ -125,7 +125,7 @@ public class Const {
 	 * This int sets the direction, in which the path begins to wander. <br>
 	 * It is by default on north.
 	 */
-	public static Direction startDirection = new Direction("north");
+	public static Direction startDirection = Direction.NORTH;
 
 	public static Color playerColor = new Color(232, 187, 62);
 
@@ -142,7 +142,7 @@ public class Const {
 	 * This method determines, whether the point lies in the playing-area
 	 * (excluding the borders) or outside of it.
 	 * 
-	 * @param point
+	 * @param vp
 	 *            the point which needs to be checked
 	 * @return true when the point lies in the playing borders. false otherwise.
 	 */

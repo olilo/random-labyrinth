@@ -67,11 +67,11 @@ public class Player2 extends JPanel implements IField {
 	}
 	
 	public void move(Direction dir) {
-		switch(dir.getDirection()) {
-			case Direction.NORTH : y -= bewegungsschritte; break;
-			case Direction.EAST : x += bewegungsschritte; break;
-			case Direction.SOUTH : y += bewegungsschritte; break;
-			case Direction.WEST : x -= bewegungsschritte; break;
+		switch(dir) {
+			case NORTH : y -= bewegungsschritte; break;
+			case EAST : x += bewegungsschritte; break;
+			case SOUTH : y += bewegungsschritte; break;
+			case WEST : x -= bewegungsschritte; break;
 		}
 		setLocation(x, y);
 	}

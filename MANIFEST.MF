@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.8.2
-Created-By: 1.7.0_25-b15 (Oracle Corporation)
-Built-By: oliver
+Ant-Version: Apache Ant 1.9.4
+Created-By: 1.8.0_66-b17 (Oracle Corporation)
+Built-By: Oliver
 Main-Class: gui.Labyrinth
 
