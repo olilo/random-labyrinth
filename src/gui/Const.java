@@ -78,7 +78,7 @@ public class Const {
 	 * Labyrinth-coordinates. <br>
 	 * Default : 25
 	 * 
-	 * @see playingHeightReal
+	 * @see #playingHeightReal
 	 */
 	public static int playingHeight = 20;
 	

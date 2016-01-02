@@ -2,11 +2,11 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 
 import javax.swing.*;
 import javax.swing.event.*;
 
+import gui.swing.*;
 import utilities.*;
 
 /**
@@ -20,22 +20,18 @@ import utilities.*;
  */
 public class Labyrinth implements ActionListener{
 
-	public Background background;
-	public JMenuBar menu;
-	public PathGenerator paths;
+	private Background background;
+	private JMenuBar menu;
+	private PathGenerator paths;
 	private ImagePath currentPath;
-	public Player2 player;
-	public JDialog victory;
+	private Player2 player;
+	private JDialog victory;
 	private JLabel waiting;
 	private LabColorChooser lcc;
 	
 	int playerID;
 	int finishID;
 	
-	final String zielImage = System.getProperty("user.dir") + File.separator + "images" + File.separator + "ziel.png";
-	final String startImage = System.getProperty("user.dir") + File.separator + "images" + File.separator + "start.png";
-	
-
 	public Labyrinth() {
 		paths = new PathGenerator();
 		
@@ -86,7 +82,6 @@ public class Labyrinth implements ActionListener{
 	}
 	
 	public void buildMenu() {
-		
 		menu = new JMenuBar();
 		
 // ----------------------- First Menu --------------------------
@@ -161,48 +156,22 @@ public class Labyrinth implements ActionListener{
 		waiting.setVisible(true);
 		
 		background.graphicsInterface.cleanUp();
-		currentPath = paths.buildNewPath();
+		currentPath = paths.buildNewPath(ImagePath.class);
 		JScrollPane pane = new JScrollPane(currentPath);
 		pane.setBounds(0, 0, background.getWidth(), background.getHeight());
 		background.graphicsInterface.add(pane, GraphicsInterface.DEFAULT_LAYER);
 		background.graphicsInterface.moveToBack(pane);
 		player = new Player2(paths.getStart(), paths.getFinish());
-		//playerID = background.graphicsInterface.addLP(player, Const.playerColor);
-		final JPanel startPanel = new JPanel () {
-			private static final long serialVersionUID = -46545424L;
-			private final Image toDraw = getToolkit().createImage(startImage);
-			@Override
-			protected void paintComponent(Graphics g) {
-				System.out.println("ziel...");
-				super.paintComponent(g);
-				g.drawImage(toDraw, 0, 0, this);
-			}
-		};
-		startPanel.setPreferredSize(new Dimension(30, 30));
-		startPanel.setLocation(0, 0);
-		startPanel.setOpaque(false);
-		final JPanel finishPanel = new JPanel () {
-			private static final long serialVersionUID = -987534L;
-			private final Image toDraw = getToolkit().createImage(zielImage);
-			@Override
-			protected void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				g.drawImage(toDraw, 0, 0, this);
-			}
-		};
-		finishPanel.setPreferredSize(new Dimension(30, 30));
-		finishPanel.setBounds(paths.getFinish().toRealRectangle());
-		finishPanel.setLocation(paths.getFinish().toRealRectangle().getLocation());
-		finishPanel.setOpaque(false);
-		background.graphicsInterface.add(startPanel, GraphicsInterface.DEFAULT_LAYER);
-		background.graphicsInterface.moveToFront(startPanel);
-		startPanel.repaint();
+		final Start start = new Start(paths.getStart());
+		final Finish finish = new Finish(paths.getFinish());
+		background.graphicsInterface.add(start, GraphicsInterface.DEFAULT_LAYER);
+		background.graphicsInterface.moveToFront(start);
+		start.repaint();
 		background.graphicsInterface.add(player, GraphicsInterface.DEFAULT_LAYER);
 		background.graphicsInterface.moveToFront(player);
-		finishID = background.graphicsInterface.addLP(paths.getFinish(), Const.finishColor);
-		background.graphicsInterface.add(finishPanel, GraphicsInterface.DEFAULT_LAYER);
-		background.graphicsInterface.moveToFront(finishPanel);
-		finishPanel.repaint();
+		background.graphicsInterface.add(finish, GraphicsInterface.DEFAULT_LAYER);
+		background.graphicsInterface.moveToFront(finish);
+		finish.repaint();
 		background.validate();
 		waiting.setVisible(false);
 	}

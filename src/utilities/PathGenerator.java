@@ -44,9 +44,9 @@ public class PathGenerator {
 	 * The rightWay indicates the right way from the start to the finish. There
 	 * is no other Way from the start to the finish than this way.
 	 * 
-	 * @see wrongWays
+	 * @see #wrongWays
 	 */
-	public ImagePath rightWay;
+	public Path rightWay;
 	
 	public int rightPathID = -1;
 
@@ -55,21 +55,21 @@ public class PathGenerator {
 	 * leading from the rightWay to any other direction. These ways neither
 	 * meet the right way (except once when they start from the rightWay) nor each other.
 	 * 
-	 * @see rightWay
+	 * @see #rightWay
 	 */
-	public ImagePath wrongWays;
+	public Path wrongWays;
 	
 	public int fullPathsID = -1;
 	
 	public int wrongPathsID = -1;
 
 	/**
-	 * @see Const.stoneWidth
+	 * @see Const#stoneWidth
 	 */
 	int sb = Const.stoneWidth;
 
 	/**
-	 * @see Const.stoneHeight;
+	 * @see Const#stoneHeight;
 	 */
 	int sh = Const.stoneHeight;
 
@@ -78,8 +78,6 @@ public class PathGenerator {
 	int verti_felder = Const.playingHeight - 2;
 
 	public PathGenerator() {
-		rightWay = new ImagePath(Const.playingWidth, Const.playingHeight);
-		wrongWays = new ImagePath(Const.playingWidth, Const.playingHeight);
 	}
 
 	public VirtualPoint getStart() {
@@ -96,11 +94,11 @@ public class PathGenerator {
 	}
 	
 	
-	public ImagePath buildNewPath() {
+	public <K extends Path> K buildNewPath(Class<K> clazz) {
 		randomizeStart();
 		randomizeFinish();
 
-		while (!setRightPath()) {
+		while (!setRightPath(clazz)) {
 			rightWay.wipe();
 			wrongWays.wipe();
 			randomizeStart();
@@ -108,10 +106,7 @@ public class PathGenerator {
 		}
 
 		setWrongPaths();
-		
-		ImagePath fullPath = wrongWays.merge(rightWay);
-		
-		return fullPath;
+		return (K) wrongWays.merge(rightWay);
 	}
 
 	
@@ -444,15 +439,22 @@ public class PathGenerator {
 		return current_length_temp;
 	}
 
-	public boolean setRightPath() {
-
+	public boolean setRightPath(Class<? extends Path> clazz) {
 		int current_length;
 		double distanceToFinish;
 		int totalSteps;
 
 		current = new VirtualPoint(start);
 		curDir = Const.startDirection;
-		rightWay = new ImagePath();
+		try {
+			rightWay = clazz.newInstance();
+			wrongWays = clazz.newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+
 		current_length = 0;
 		distanceToFinish = current.distanceTo(finish);
 		totalSteps = 0;

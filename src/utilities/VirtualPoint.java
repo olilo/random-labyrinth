@@ -205,7 +205,7 @@ public class VirtualPoint implements IField{
 	 *            the given path
 	 * @return whether this Virtualpoint is part of the path
 	 */
-	public boolean isPartOf(ImagePath path) {
+	public boolean isPartOf(Path path) {
 		if (path != null) {
 			return path.contains(this);
 		}
@@ -224,7 +224,7 @@ public class VirtualPoint implements IField{
 	 *            the given paths
 	 * @return whether this Virtualpoint is part in any of the paths
 	 */
-	public boolean isPartOf(ImagePath[] paths) {
+	public boolean isPartOf(Path[] paths) {
 		boolean temp = false;
 		if (paths != null) {
 			for (int i = 0; i < paths.length; i++) {

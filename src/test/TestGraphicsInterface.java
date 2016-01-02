@@ -1,17 +1,15 @@
 package test;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 
-import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import utilities.GraphicsInterface;
+import gui.swing.GraphicsInterface;
 
 public class TestGraphicsInterface {
 
