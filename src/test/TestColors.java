@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import utilities.LabColorChooser;
+import gui.swing.LabColorChooser;
 
 
 /**

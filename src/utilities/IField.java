@@ -12,8 +12,6 @@ import java.awt.Graphics;
  */
 public interface IField {
 	
-	public Point getPosition();
-	
-	public void paint(Graphics g);
+	Point getPosition();
 
 }

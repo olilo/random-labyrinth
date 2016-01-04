@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import gui.Const;
 import utilities.Path;
 import utilities.VirtualPoint;
-import utilities.exceptions.ImageNotFoundException;
 
 
 /**

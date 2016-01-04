@@ -63,16 +63,6 @@ public class PathGenerator {
 	
 	public int wrongPathsID = -1;
 
-	/**
-	 * @see Const#stoneWidth
-	 */
-	int sb = Const.stoneWidth;
-
-	/**
-	 * @see Const#stoneHeight;
-	 */
-	int sh = Const.stoneHeight;
-
 	int horiz_felder = Const.playingWidth - 2;
 
 	int verti_felder = Const.playingHeight - 2;
