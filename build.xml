@@ -22,7 +22,7 @@
 		<mkdir dir="${dist}" />
 		<manifest file="${manifestFile}">
 			<attribute name="Built-By" value="${user.name}"/>
-			<attribute name="Main-Class" value="gui.Labyrinth" />
+			<attribute name="Main-Class" value="gui.swing.Labyrinth" />
 		</manifest>
 
 		<jar jarfile="${jarFile}" basedir="${bin}" manifest="${manifestFile}" />

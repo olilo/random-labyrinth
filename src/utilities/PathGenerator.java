@@ -485,7 +485,7 @@ public class PathGenerator {
 	}
 
 	public void setWrongPaths() {
-		for (int i = 0; i <= rightWay.length(); i++) {
+		for (int i = 0; i < rightWay.length(); i++) {
 			System.out.println("setWrongPaths : rightWay : " + i);
 			if (rightWay.get(i) != null) {
 				current = rightWay.get(i);
@@ -495,7 +495,7 @@ public class PathGenerator {
 			}
 		}
 		for (int i = 0; i <= 0; i++) {
-			for (int j = 0; j <= wrongWays.length(); j++) {
+			for (int j = 0; j < wrongWays.length(); j++) {
 				System.out.println("setWrongPaths : wrongWays (" + i + ") : " + j);
 				if (wrongWays.get(j) != null) {
 					current = wrongWays.get(j);

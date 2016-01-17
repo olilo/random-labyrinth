@@ -47,6 +47,7 @@ public class GraphicsInterface extends JLayeredPane {
 		this.surface.setOpaque(false);
 		this.surface.setLocation(0, 0);
 		addDrawingSurface();
+		this.setOpaque(true);
 		
 		shapes = new ArrayList<Shape>();
 		color = new ArrayList<Color>();

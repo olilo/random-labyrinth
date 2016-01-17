@@ -205,8 +205,7 @@ public class ImagePath extends JPanel implements Path {
 	
 	private Square[][] toSquares() {
 		final Square[][] ret = new Square[width][height];
-		
-		
+
 		for (int j = 0; j < height; j++) {
 			for (int i = 0; i < width; i++) {
 				if (content[i][j]) {
@@ -297,7 +296,7 @@ public class ImagePath extends JPanel implements Path {
 		if (squares == null) {
 			squares = toSquares();
 		}
-		
+
 		int curX = 0;
 		int curY = 0;
 		
