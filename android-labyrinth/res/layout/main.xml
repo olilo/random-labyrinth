@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+                xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-        >
+                tools:context="MyActivity">
 
     <de.github.olilo.labyrinth.PathView
             android:layout_width="fill_parent"
@@ -12,8 +12,8 @@
         />
 
     <ImageView
-            android:layout_width="128px"
-            android:layout_height="128px"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_centerInParent="true"
             android:id="@+id/player"
             android:src="@drawable/spieler"

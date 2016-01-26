@@ -1,15 +1,17 @@
 package de.github.olilo.labyrinth;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import utilities.PathGenerator;
 import utilities.VirtualPoint;
 
 public class MyActivity extends Activity {
-
-    private VirtualPoint player;
 
     /**
      * Called when the activity is first created.
@@ -18,12 +20,15 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        player = new VirtualPoint(0, 0, 128, 128);
         /*
         final PathGenerator pathGenerator = new PathGenerator();
         player.setX(pathGenerator.getStart().getX());
         player.setY(pathGenerator.getStart().getY());
         */
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager wm = getWindowManager();
+        wm.getDefaultDisplay().getMetrics(metrics);
 
         setContentView(R.layout.main);
     }

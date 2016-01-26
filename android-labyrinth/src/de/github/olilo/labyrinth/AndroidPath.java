@@ -34,6 +34,24 @@ public class AndroidPath implements Path {
         return height;
     }
 
+    public boolean[][] getContent() {
+        final boolean[][] result = new boolean[width][height];
+        for (int i = 0; i < content.length; i++) {
+            System.arraycopy(content[i], 0, result[i], 0, content[i].length);
+        }
+        return result;
+    }
+
+    public void setContent(boolean[][] input) {
+        for (int i = 0; i < input.length; i++) {
+            for (int j = 0; j < input.length; j++) {
+                if (input[i][j]) {
+                    this.add(new VirtualPoint(i, j));
+                }
+            }
+        }
+    }
+
     @Override
     public void add(VirtualPoint lp) {
         if (isInBounds(lp) && !content[(int)lp.getX()][(int)lp.getY()]) {
