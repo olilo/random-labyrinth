@@ -1,8 +1,5 @@
 package utilities;
 
-/**
- * Created by Oliver on 02.01.2016.
- */
 public interface Path {
 	/**
 	 * This method adds the rectangle, that belongs to the VirtualPoint lp, to

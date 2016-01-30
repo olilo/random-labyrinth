@@ -1,12 +1,5 @@
 package utilities;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-
-
-
 /**
  * 
  * This Class serves as a representation of single rectangles on the screen. On
@@ -75,10 +68,10 @@ public class VirtualPoint implements IField{
 	}
 
 	/**
-	 * Builds a VirtualPodouble out of an existing VirtualPodouble. (In other <br>
-	 * Words, this VirtualPodouble is a copy of the existing VirtualPodouble) <br>
+	 * Builds a VirtualPoint out of an existing VirtualPoint. (In other <br>
+	 * Words, this VirtualPoint is a copy of the existing VirtualPoint) <br>
 	 * 
-	 * @param podouble the VirtualPodouble, from which the new VirtualPodouble is
+	 * @param point the VirtualPoint, from which the new VirtualPoint is
 	 *            constructed
 	 */
 	public VirtualPoint(VirtualPoint point) {
@@ -86,35 +79,6 @@ public class VirtualPoint implements IField{
 		this.y = point.y;
 		this.width = point.width;
 		this.height = point.height;
-	}
-
-	/*/**
-	 * Builds a Virtualpoint from a given point in real Coordinates. <br>
-	 * Width and Height of the Virtualpoint are by default 1. <br>
-	 * 
-	 * @param realpoint
-	 *            the real point
-	 *
-	public VirtualPoint(Point realpoint) {
-		x = realpoint.x;
-		y = realpoint.y;
-		width = 1;
-		height = 1;
-	}*/
-
-	/**
-	 * Builds a Virtualpoint from a given Rectangle in real Coordinates. 
-	 * The rectangle's width and height are saved in the Virtualpoint.
-	 * <br>
-	 * 
-	 * @param realRectangle
-	 *            the real Rectangle
-	 */
-	public VirtualPoint(Rectangle rect) {
-		width = rect.width;
-		height = rect.height;
-		x = rect.x / width;
-		y = rect.y / height;
 	}
 
 	public double getX() {
@@ -253,34 +217,6 @@ public class VirtualPoint implements IField{
 		double x_difference = Math.abs(x - aim.getX());
 		double y_difference = Math.abs(y - aim.getY());
 		return (Math.sqrt(Math.pow(y_difference, 2) + Math.pow(x_difference, 2)));
-	}
-
-	/**
-	 * This Method returns a real point in the center of the Rectangle that is
-	 * represented by this Virtualpoint.
-	 * 
-	 * @see toRealRectangle()
-	 * @return the Virtualpoint in real Coordinates
-	 */
-	public Point2D.Double toRealPoint() {
-		double x_real = (double) x*width + (width/2);
-		double y_real = (double) y*width + (height/2);
-		return new Point2D.Double(x_real, y_real);
-	}
-
-	/**
-	 * This Method returns the Rectangle that is represented by this
-	 * Virtualpoint
-	 * 
-	 * @return the Rectangle in real Coordinates related to this Virtualpoint
-	 */
-	public Rectangle toRealRectangle() {
-		return new Rectangle((int)(x * width), (int)(y * height), (int)width, (int)height);
-	}
-	
-	public void paint(Graphics g) {
-		Graphics2D g2 = (Graphics2D)g;
-		g2.fill(this.toRealRectangle());
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package gui.swing;
 
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -13,16 +14,18 @@ import javax.swing.*;
  */
 public class Background extends JFrame {
 
+	public static Color backGroundColor = new Color(118, 187, 62);
+
 	public GraphicsInterface graphicsInterface;
 
 	public Background() {
 		super();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
 	public Background(String title) {
 		super(title);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
 	public void buildGraphicsInterface() {

@@ -124,7 +124,7 @@ public class Labyrinth implements ActionListener{
 	public void buildBackground() {
 		background = new Background();
 		background.addKeyListener(new WorkspaceKeyListener());
-		background.setBackground(Const.backGroundColor);
+		background.setBackground(Background.backGroundColor);
 		background.setJMenuBar(menu);
 		background.setPreferredSize(new Dimension(Const.frameWidth, Const.frameHeight));
 		background.setTitle("Das Labyrinth");
@@ -142,7 +142,7 @@ public class Labyrinth implements ActionListener{
 	
 	public void setColorChooser() {
 		lcc = new LabColorChooser(background);
-		lcc.addSource("Background", "Hintergrundfarbe ändern", Const.backGroundColor);
+		lcc.addSource("Background", "Hintergrundfarbe ändern", Background.backGroundColor);
 
 		lcc.addColorChangeListener(new ColorChangeListener());
 		lcc.addComponentListener(new FocusToBackground());

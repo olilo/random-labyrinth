@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.Color;
-
 import utilities.Direction;
 import utilities.VirtualPoint;
 
@@ -126,16 +124,6 @@ public class Const {
 	 * It is by default on north.
 	 */
 	public static Direction startDirection = Direction.NORTH;
-
-	public static Color playerColor = new Color(232, 187, 62);
-
-	public static Color pathColor = new Color(177, 87, 38);
-
-	public static Color backGroundColor = new Color(118, 187, 62);
-	
-	public static Color finishColor = new Color(213, 187, 106);
-
-	public static final Color defaultColor = Color.WHITE;
 	
 
 	/**

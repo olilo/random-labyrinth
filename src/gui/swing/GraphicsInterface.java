@@ -2,11 +2,7 @@ package gui.swing;
 
 import utilities.VirtualPoint;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Shape;
+import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
@@ -159,6 +155,18 @@ public class GraphicsInterface extends JLayeredPane {
 	}
 
 	/**
+	 * This Method returns the Rectangle that is represented by this
+	 * Virtualpoint
+	 *
+	 * @return the Rectangle in real Coordinates related to this Virtualpoint
+	 */
+	public Rectangle toRealRectangle(VirtualPoint vp) {
+		final int x = (int)(vp.getX() * vp.getWidth());
+		final int y = (int)(vp.getY() * vp.getHeight());
+		return new Rectangle(x, y, (int)vp.getWidth(), (int)vp.getHeight());
+	}
+
+	/**
 	 * This method adds the Rectangle of a VirtualPoint to the graphical
 	 * Output. <br>
 	 * The Rectangle is drawn in the default Color. <br>
@@ -171,9 +179,9 @@ public class GraphicsInterface extends JLayeredPane {
 	public int addLP(VirtualPoint lp) {
 		if (lp != null) {
 			i++;
-			shapes.add(lp.toRealRectangle());
+			shapes.add(toRealRectangle(lp));
 			color.add(defaultColor);
-			repaint(lp.toRealRectangle());
+			repaint(toRealRectangle(lp));
 			return i;
 		}
 		return -1;
@@ -193,10 +201,10 @@ public class GraphicsInterface extends JLayeredPane {
 	public int addLP(VirtualPoint lp, Color c) {
 		if (lp != null) {
 			i++;
-			shapes.add(lp.toRealRectangle());
+			shapes.add(toRealRectangle(lp));
 			if (c != null)
 				color.add(c);
-			repaint(lp.toRealRectangle());
+			repaint(toRealRectangle(lp));
 			return i;
 		}
 		return -1;
@@ -271,7 +279,7 @@ public class GraphicsInterface extends JLayeredPane {
 	 */
 	public void editEntry(VirtualPoint entry, int id) {
 		if (entry != null)
-			shapes.set(id, entry.toRealRectangle());
+			shapes.set(id, toRealRectangle(entry));
 		repaint();
 	}
 
@@ -289,7 +297,7 @@ public class GraphicsInterface extends JLayeredPane {
 	 */
 	public void editEntry(VirtualPoint entry, Color c, int id) {
 		if (entry != null)
-			shapes.set(id, entry.toRealRectangle());
+			shapes.set(id, toRealRectangle(entry));
 		if (c != null)
 			color.set(id, c);
 		repaint();

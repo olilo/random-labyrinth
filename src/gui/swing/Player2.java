@@ -1,13 +1,12 @@
 package gui.swing;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
 import java.io.File;
 
 import javax.swing.JPanel;
 
 import utilities.*;
+import utilities.Point;
 
 public class Player2 extends JPanel implements IField {
 	
@@ -69,7 +68,12 @@ public class Player2 extends JPanel implements IField {
 	}
 	
 	public boolean isPartOf(Path p) {
-		return new VirtualPoint(getBounds()).isPartOf(p);
+		Rectangle rect = getBounds();
+		double width = rect.width;
+		double height = rect.height;
+		double x = rect.x / width;
+		double y = rect.y / height;
+		return new VirtualPoint(x, y, width, height).isPartOf(p);
 	}
 	
 	

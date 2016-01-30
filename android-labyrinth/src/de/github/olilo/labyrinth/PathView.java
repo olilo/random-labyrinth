@@ -83,6 +83,16 @@ public class PathView extends View {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        metrics.widthPixels = widthMeasureSpec;
+//        metrics.heightPixels = heightMeasureSpec;
+
+        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         return super.onTouchEvent(event);
     }
