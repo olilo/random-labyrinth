@@ -110,14 +110,14 @@ public class Const {
 	 * simply changed by a reference. (e.g. Const.frameWidth = 1280). <br>
 	 * frameWidth is by default on 1024
 	 */
-	public static int frameWidth = 1050;
+	public static int frameWidth = 915;
 
 	/**
 	 * This int represents the height of the Frame for the Labyrinth. It can be
 	 * simply changed by a reference. (e.g. Const.frameHeight = 1024). <br>
 	 * frameHeight is by default on 768
 	 */
-	public static int frameHeight = 880;
+	public static int frameHeight = 660;
 
 	/**
 	 * This int sets the direction, in which the path begins to wander. <br>
